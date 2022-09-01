@@ -14,7 +14,9 @@ function Home({ products, bannerData }) {
           <Product key={product._id} product={product} />
         ))}
       </div>
-      <FooterBanner></FooterBanner>
+      <FooterBanner
+        footerBanner={bannerData.length && bannerData[0]}
+      ></FooterBanner>
     </>
   );
 }
