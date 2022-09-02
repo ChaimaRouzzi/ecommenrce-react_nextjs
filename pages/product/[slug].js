@@ -9,10 +9,15 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { useStateContext } from "../../context/StateContext";
+import getStripe from "../../lib/getStripe";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const { qty, incQty, decQty, onAdd } = useStateContext();
+  const { qty, incQty, decQty, onAdd, setShowCart } = useStateContext();
+  const HandelByKnow = async () => {
+    onAdd(product, qty);
+    setShowCart(true);
+  };
   return (
     <div>
       <div className="product-detail-container">
@@ -72,7 +77,7 @@ const ProductDetails = ({ product, products }) => {
             >
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick="">
+            <button type="button" className="buy-now" onClick={HandelByKnow}>
               Buy Now
             </button>
           </div>
